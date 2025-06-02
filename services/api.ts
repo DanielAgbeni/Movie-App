@@ -7,8 +7,11 @@ export const TMDB_CONFIG = {
 		Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
 	},
 };
-
-export const fetchMovies = async ({ query }: { query: string }) => {
+export const fetchMovies = async ({
+	query,
+}: {
+	query: string;
+}): Promise<Movie[]> => {
 	const endpoint = query
 		? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
 		: `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc`;
@@ -22,5 +25,7 @@ export const fetchMovies = async ({ query }: { query: string }) => {
 	}
 
 	const data = await response.json();
-	return data.result;
+	// console.log(data);
+
+	return data.results;
 };
