@@ -1,14 +1,15 @@
 import { icons } from '@/constants/icons';
-import React, { useState } from 'react';
+import React from 'react';
 import { Image, TextInput, View } from 'react-native';
 
 interface Props {
 	placeHolder: string;
 	onPress?: () => void;
+	value: string;
+	onChangeText: (text: string) => void;
 }
 
-const SearchBar = ({ placeHolder, onPress }: Props) => {
-	const [query, setQuery] = useState('');
+const SearchBar = ({ placeHolder, onPress, value, onChangeText }: Props) => {
 	return (
 		<View className='flex-row items-center bg-dark-200 rounded-full px-5 py-4'>
 			<Image
@@ -19,13 +20,15 @@ const SearchBar = ({ placeHolder, onPress }: Props) => {
 			/>
 			<TextInput
 				onPress={onPress}
+				value={value}
+				onChangeText={onChangeText}
 				placeholder={placeHolder}
-				value={query}
-				onChangeText={(text: string) => {
-					setQuery(text);
-				}}
 				placeholderTextColor='#ab8bff'
 				className='flex-1 ml-2 text-white'
+				// blurOnSubmit={false}
+				// returnKeyType='search'
+				// autoCorrect={false}
+				// autoCapitalize='none'
 			/>
 		</View>
 	);

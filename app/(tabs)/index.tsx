@@ -25,6 +25,8 @@ export default function Index() {
 				className='w-12 h-10 mt-20 mb-5 mx-auto'
 			/>
 			<SearchBar
+				value=''
+				onChangeText={() => {}}
 				onPress={() => router.push('/search')}
 				placeHolder='Search for a movie'
 			/>
@@ -74,7 +76,7 @@ export default function Index() {
 				// scrollEnabled={false}
 				contentContainerStyle={{
 					minHeight: '100%',
-					paddingBottom: 10,
+					paddingBottom: 100,
 				}}
 				columnWrapperStyle={{
 					justifyContent: 'flex-start',
